@@ -14,9 +14,28 @@ public class RomanCalc {
 	
 	public RomanCalc(String numberal) {
 		this.valid_flag = this.separate(numberal);
+		this.valid_flag = this.checkValid();
 		if (this.valid_flag){
 			this.calc();
 		}
+	}
+
+	private boolean checkValid() {
+		if (! this.valid_flag){
+			return false;
+		}
+		
+		for (int i=0; i<this.numbers.size(); i++){
+			String num = numbers.get(i);
+			int value = 0;
+			if (num.length() == 2){
+				// 减法
+			}else{
+				// 加法
+			}
+		}
+		
+		return true;
 	}
 
 	private int calc() {

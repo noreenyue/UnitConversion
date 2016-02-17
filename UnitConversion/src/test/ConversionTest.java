@@ -8,7 +8,7 @@ public class ConversionTest {
 
 	@Test
 	public void Calctest() {
-		String text = "MCMXXC";
+		String text = "MCMXLIV";
 		RomanCalc calc = new RomanCalc(text);
 	}
 
