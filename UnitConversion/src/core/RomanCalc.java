@@ -1,11 +1,13 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-
+/**
+ * 罗马公式计算类
+ * @author noreen
+ *
+ */
 public class RomanCalc {
 	private List<String> numbers = new ArrayList<String>();
 	private int value = 0;
@@ -17,12 +19,25 @@ public class RomanCalc {
 		this.calc();
 	}
 	
+	/**
+	 * 获取单个数值
+	 * @param num
+	 * @return
+	 */
 	private int getNumValue(String num){
 		if (num.length() == 2){
-			int num1 = Constants.ROMAN_NUMBERALS.get(num.charAt(0));
-			int num2 = Constants.ROMAN_NUMBERALS.get(num.charAt(1));
-			if (num1 < num2) {
-				return num2-num1;
+			char c1 = num.charAt(0);
+			char c2 = num.charAt(1);
+			if (!Constants.ROMAN_NUMBERALS.containsKey(c1)){
+				this.error_msg = "Roman Numberal not found: " + c1;
+			}else if (!Constants.ROMAN_NUMBERALS.containsKey(c2)){
+					this.error_msg = "Roman Numberal not found: " + c2;
+			}else{
+				int num1 = Constants.ROMAN_NUMBERALS.get(c1);
+				int num2 = Constants.ROMAN_NUMBERALS.get(c2);
+				if (num1 < num2) {
+					return num2-num1;
+				}
 			}
 		}
 		
@@ -33,6 +48,10 @@ public class RomanCalc {
 		return sum;
 	}
 
+	/**
+	 * 核心计算
+	 * @return
+	 */
 	private boolean calc() {
 		if (! this.valid_flag){
 			return false;
@@ -52,10 +71,14 @@ public class RomanCalc {
 			previousVal = value;
 		}
 		
-		
 		return true;
 	}
 
+	/**
+	 * 将一串文字分解
+	 * @param numberal
+	 * @return
+	 */
 	private boolean separate(String numberal) {
 		numberal = numberal.trim();
 		int offset = 0;
@@ -73,6 +96,8 @@ public class RomanCalc {
 				if(currVal < nextVal){
 					if (offset < i){
 						this.numbers.add(numberal.substring(offset, i));
+					}
+					if(offset <= i){
 						this.numbers.add(numberal.substring(i, i+2));
 						offset = i+2;
 					}

@@ -5,6 +5,11 @@ import java.util.List;
 
 import core.Constants;
 
+/**
+ * 定义句
+ * @author noreen
+ *
+ */
 public class Definition extends BaseSentence { 
 	private int sub_type = -1;
 	private boolean flag = false;
@@ -14,7 +19,7 @@ public class Definition extends BaseSentence {
 	private String symbol = "";		 
 	private String metal = "";		 
 	
-	private String roman_symbol = "";		
+	private char roman_symbol = ' ';
 
 	public Definition(String sentence) {
 		super(sentence);
@@ -27,7 +32,7 @@ public class Definition extends BaseSentence {
 		boolean flag = true;
 		if(this.words.length == 3 && this.words[1].equals("is")){	// prok is V
 			this.sub_type = Constants.DEFINITION_TYPE_ROMAN;
-			this.roman_symbol = this.words[2];
+			this.roman_symbol = this.words[2].charAt(0);
 			this.numbers.add(this.words[0]);
 
 		}else if(this.words.length > 5 ){		// glob glob Silver is 34 Credits
@@ -75,7 +80,7 @@ public class Definition extends BaseSentence {
 		return metal;
 	}
 
-	public String getRoman_symbol() {
+	public char getRoman_symbol() {
 		return roman_symbol;
 	}
 

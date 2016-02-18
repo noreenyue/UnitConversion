@@ -5,8 +5,14 @@ import java.util.List;
 
 import core.Constants;
 
+/**
+ * 题问句
+ * @author noreen
+ *
+ */
 public class Question extends BaseSentence {
 	private String symbol = "";		 
+	private String mental = "";		 
 	private boolean flag = false;
 	private List<String> numbers = new ArrayList<String>();
 	private int sub_type = -1;
@@ -25,12 +31,14 @@ public class Question extends BaseSentence {
 		boolean flag = true;
 		if(this.words[1].toLowerCase().equals("many") && this.words[3].toLowerCase().equals("is") && this.words.length > 4){	// how many Credits is glob prok Silver ?
 			this.symbol = this.words[2];
-			for (int i=5; i<this.words.length-1; i++){
-				numbers.add(words[i]);
+			int i = 4;
+			for (; i<this.words.length-2; i++){
+				numbers.add(this.words[i]);
 			}
+			this.mental = this.words[i];
 			this.sub_type = Constants.QUESTION_TYPE_HOWMANY;
 		}else if(this.words[1].toLowerCase().equals("much") && this.words[2].toLowerCase().equals("is")  && this.words.length > 3){		//how much is pish tegj glob glob ?
-			for (int i=4; i<this.words.length-1; i++){
+			for (int i=3; i<this.words.length-1; i++){
 				numbers.add(words[i]);
 			}
 			this.sub_type = Constants.QUESTION_TYPE_HOWMUCH;
@@ -56,4 +64,9 @@ public class Question extends BaseSentence {
 	public boolean isFlag() {
 		return flag;
 	}
+
+	public String getMental() {
+		return mental;
+	}
+	
 }
