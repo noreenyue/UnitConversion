@@ -30,12 +30,12 @@ public class Definition extends BaseSentence {
 	@Override
 	public boolean parse() {
 		boolean flag = true;
-		if(this.words.length == 3 && this.words[1].equals("is")){	// prok is V
+		if(this.words.length == 3 && this.words[1].equals("is")){		
 			this.sub_type = Constants.DEFINITION_TYPE_ROMAN;
 			this.roman_symbol = this.words[2].charAt(0);
 			this.numbers.add(this.words[0]);
 
-		}else if(this.words.length > 5 ){		// glob glob Silver is 34 Credits
+		}else if(this.words.length > 5 ){			
 			this.sub_type = Constants.DEFINITION_TYPE_METAL;
 			int isIdx = 0;
 			for(; isIdx<this.words.length; isIdx++){

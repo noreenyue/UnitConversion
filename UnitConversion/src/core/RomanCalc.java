@@ -92,6 +92,10 @@ public class RomanCalc {
 			
 			if( i < numberal.length() - 1){
 				Character nextChar = numberal.charAt(i+1);
+				if (!Constants.ROMAN_NUMBERALS.containsKey(nextChar)){
+					this.error_msg = "Character '" + nextChar + "' is not a Roman numberal.";
+					return false;
+				}
 				int nextVal = Constants.ROMAN_NUMBERALS.get(nextChar);
 				int currVal = Constants.ROMAN_NUMBERALS.get(currChar);
 				if (this.checkOneTime(currVal)){

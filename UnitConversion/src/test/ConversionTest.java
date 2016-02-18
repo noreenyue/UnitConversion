@@ -75,7 +75,7 @@ public class ConversionTest {
 		}
 		
 		if (manager.isValid_flag()){
-//			System.out.println("文本有误");
+//			System.out.println("text error");
 		}
 	}
 	
