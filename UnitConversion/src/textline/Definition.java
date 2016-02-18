@@ -31,7 +31,7 @@ public class Definition extends BaseSentence {
 			this.numbers.add(this.words[0]);
 
 		}else if(this.words.length > 5 ){		// glob glob Silver is 34 Credits
-			this.sub_type = Constants.DEFINITION_TYPE_SYMBOL;
+			this.sub_type = Constants.DEFINITION_TYPE_METAL;
 			int isIdx = 0;
 			for(; isIdx<this.words.length; isIdx++){
 				if (this.words[isIdx].equals("is")){
