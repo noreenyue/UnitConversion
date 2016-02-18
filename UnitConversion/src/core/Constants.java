@@ -3,6 +3,11 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 常量定义
+ * @author noreen
+ *
+ */
 public class Constants {
 	public static final Map<Character, Integer> ROMAN_NUMBERALS = new HashMap<Character, Integer>(){
         {
