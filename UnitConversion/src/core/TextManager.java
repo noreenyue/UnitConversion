@@ -34,8 +34,6 @@ public class TextManager {
 		List<Question> questions = new ArrayList<Question>();
 		this.translate(lines, symbols, mentals, questions);
 		this.equalCalc(symbols, mentals);
-		
-		// 获取问题答案
 		this.answer(questions);
 	}
 	
@@ -53,13 +51,10 @@ public class TextManager {
 				Definition def = new Definition(line);
 				if (def.isFlag()){
 					if (def.getSubType() == Constants.DEFINITION_TYPE_ROMAN){
-//						System.out.println(def.getRoman_symbol());
 						symbols.add(def);
 					}else if (def.getSubType() == Constants.DEFINITION_TYPE_METAL){
-//						System.out.println(def.getSymbol()+", " + def.getMetal() + ", " + def.getValue());
 						mentals.add(def);
 					}
-//					System.out.println(def.getNumbers());
 				}else{
 					this.error();
 				}
@@ -70,7 +65,6 @@ public class TextManager {
 				this.error();
 			}
 		}
-//		System.out.println(questions);
 		
 	}
 
@@ -84,7 +78,6 @@ public class TextManager {
 		for (Definition symbol : symbols){
 			this.symbolValues.put(symbol.getNumbers().get(0), symbol.getRoman_symbol());
 		}
-//		System.out.println(this.symbolValues);
 		
 		// 解析金属价值
 		for (Definition mental : mentals){
@@ -99,7 +92,6 @@ public class TextManager {
 				this.error();
 			}
 		}
-//		System.out.println(this.mentalValues);
 	}
 
 	/**
