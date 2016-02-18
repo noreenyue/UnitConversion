@@ -20,7 +20,7 @@ public class ConversionTest {
 
 	@Test
 	public void test_romanValue() {
-		String[] texts = new String[]{"MCMLXXX", "MCMLXXX ", "MCMXXC", "XLII"};
+		String[] texts = new String[]{"MCMLXXX", "MCMLXXX ", "MCMXXC", "XLII", "DDD"};
 		for (int i=0; i<texts.length; i++){
 			RomanCalc calc = new RomanCalc(texts[i]);
 			System.out.println("\n" + texts[i] + ": " + calc.getNumbers());

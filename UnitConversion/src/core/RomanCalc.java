@@ -82,6 +82,7 @@ public class RomanCalc {
 	private boolean separate(String numberal) {
 		numberal = numberal.trim();
 		int offset = 0;
+		List<Character> oneTimes = new ArrayList<Character>();
 		for(int i=0; i<numberal.length(); i++){
 			Character currChar = numberal.charAt(i);
 			if (!Constants.ROMAN_NUMBERALS.containsKey(currChar)){
@@ -93,6 +94,15 @@ public class RomanCalc {
 				Character nextChar = numberal.charAt(i+1);
 				int nextVal = Constants.ROMAN_NUMBERALS.get(nextChar);
 				int currVal = Constants.ROMAN_NUMBERALS.get(currChar);
+				if (this.checkOneTime(currVal)){
+					if (oneTimes.contains(currChar)){
+						this.error_msg = "Character '" + currChar + "' is duplicated.";
+						return false;
+					}else{
+						oneTimes.add(currChar);
+					}
+				}
+				
 				if(currVal < nextVal){
 					if (offset < i){
 						this.numbers.add(numberal.substring(offset, i));
@@ -109,6 +119,19 @@ public class RomanCalc {
 			this.numbers.add(numberal.substring(offset));
 		}
 		return true;
+	}
+	
+	/**
+	 * 罗马字母是否只能重复一次
+	 * @param value
+	 * @return
+	 */
+	private boolean checkOneTime(int value) {
+		String strVal = String.valueOf(value);
+		if (strVal.charAt(0) == '5'){
+			return true;
+		}
+		return false;				
 	}
 
 	public List<String> getNumbers() {
